@@ -20,7 +20,7 @@ public abstract class Worker {
 
     public double calculateSalary(int hours){
         if (hours < 0 || hours > 176){
-            System.err.println("Error: Hours must be between 0 and 176");
+           throw new IllegalArgumentException ("Error: Hours must be between 0 and 176");
         }
         return getHourlyRate() * hours;
     }

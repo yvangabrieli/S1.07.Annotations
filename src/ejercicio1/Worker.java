@@ -10,18 +10,24 @@ public abstract class Worker {
         this.lastName = lastName;
         this.hourlyRate = hourlyRate;
     }
-    public String getFirstName() {return firstName;}
-    public String getLastName() {return lastName;}
-    public double getHourlyRate() {return hourlyRate;}
 
-    public double calculateSalary (int hours) {
-        double salary = 0;
-        if (hours >= 0 && hours <= 176) {
-            salary = hours * hourlyRate;
-        } else {
-            System.err.println("Error: hours must be between 0 and 176");
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public double getHourlyRate() {
+        return hourlyRate;
+    }
+
+    public double calculateSalary(int hours) {
+        if (hours < 0 || hours > 176) {
+            throw new IllegalArgumentException(" Hours must be between 0 and 176");
         }
-        return salary;
+        return hours * hourlyRate;
     }
 
     @Override

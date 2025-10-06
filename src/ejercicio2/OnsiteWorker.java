@@ -18,8 +18,7 @@ public class OnsiteWorker extends Worker {
     @Override
     public double calculateSalary(int hours) {
         if (hours < 0 || hours > 176) {
-            System.err.println("Error: hours must be between 0 and 176");
-            return 0;
+            throw new IllegalArgumentException(" Error: hours must be between 0 and 176");
         }
         return super.calculateSalary(hours) + getFueAllowance();
     }
