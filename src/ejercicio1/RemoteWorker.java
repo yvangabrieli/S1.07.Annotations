@@ -8,13 +8,9 @@ public class RemoteWorker extends Worker {
     }
     @Override
     public double calculateSalary(int hours) {
-        double salary;
-        if (hours >= 0 && hours <= 176){
-            salary = super.calculateSalary(hours) + internetFee;
-        } else {
-            salary = 0;
-            System.err.println("Error: hours must be between 0 and 176");
+        if ((hours < 0) || (hours > 176)) {
+            throw new IllegalArgumentException("Error: hours must be between 0 and 176");
         }
-        return salary;
+        return super.calculateSalary(hours) + internetFee;
     }
 }

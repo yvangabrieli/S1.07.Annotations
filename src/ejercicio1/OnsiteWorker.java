@@ -10,15 +10,11 @@ public class OnsiteWorker extends Worker {
     public void setFuelAllowance(double fuelAllowance) {OnsiteWorker.fuelAllowance = fuelAllowance;}
 
     @Override
-    public double calculateSalary(int hours){
-        double salary = 0;
-        if (hours >= 0 && hours <= 176){
-            salary = super.calculateSalary(hours) + getFuelAllowance();
+    public double calculateSalary(int hours) {
+        if (hours < 0 && hours > 176) {
+            throw new IllegalArgumentException("Error: hours must be between 0 and 176");
         }
-        else{
-            System.err.println("Error: hours must be between 0 and 176");
-        }
-        return salary;
+        return super.calculateSalary(hours) + fuelAllowance;
     }
 }
 

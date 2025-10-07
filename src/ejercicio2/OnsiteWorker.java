@@ -15,6 +15,7 @@ public class OnsiteWorker extends Worker {
     public static void setFueAllowance(double fueAllowance) {
         OnsiteWorker.fueAllowance = fueAllowance;
     }
+
     @Override
     public double calculateSalary(int hours) {
         if (hours < 0 || hours > 176) {
